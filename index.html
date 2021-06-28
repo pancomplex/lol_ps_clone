@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LOL.PS 클론코딩</title>
+
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon-32x32.png" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <nav>
+        <div class="main_logo"><img src="images/header-logo.png" alt="LOL.PS" /></div>
+        <ul class="gnb">
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">챔피언 랭킹</a></li>
+          <li>
+            <a href="#">커뮤니티</a>
+            <ul class="gnb_sub dropdown">
+              <li><a href="#">빌드 연구소</a></li>
+              <li><a href="#">자유 게시판</a></li>
+              <li><a href="#">대회 게시판</a></li>
+              <li><a href="#">실시간 유저정보 게시판</a></li>
+              <li><a href="#">칼바람 게시판</a></li>
+              <li><a href="#">TFT 게시판</a></li>
+              <li><a href="#">룬테라 게시판</a></li>
+              <li><a href="#">와일드리프트 게시판</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">라인별 게시판</a>
+            <ul class="gnb_sub dropdown">
+              <li><a href="#">전체 게시물</a></li>
+              <li><a href="#">탑 게시판</a></li>
+              <li><a href="#">정글 게시판</a></li>
+              <li><a href="#">미드 게시판</a></li>
+              <li><a href="#">바텀 게시판</a></li>
+              <li><a href="#">서폿 게시판</a></li>
+            </ul>
+          </li>
+          <li><a href="#">PS 연구실</a></li>
+          <li><a href="#">상대법 검색</a></li>
+        </ul>
+        <div class="signbox">
+          <button>회원가입</button>
+          <button>로그인</button>
+        </div>
+      </nav>
+      <div class="header_bg"></div>
+    </header>
+    <!-- /header -->
+
+    <!-- main -->
+    <div class="top_bg"></div>
+    <main>
+      <div class="search">
+        <form>
+          <input type="text" placeholder="검색어를 입력하세요" name="q" />
+          <button type="submit"><img src="images/icon_search.png" alt="search" /></button>
+        </form>
+        <div class="realtime_container">
+          <span>실시간 검색어</span>
+          <img src="images/icon_chevron-white.png" />
+          <div class="realtime_ul_wrapper">
+            <ul id="realtime">
+              <li>
+                <a href="#"><span>1</span>세트</a>
+              </li>
+              <li>
+                <a href="#"><span>2</span>이즈리얼</a>
+              </li>
+              <li>
+                <a href="#"><span>3</span>아칼리</a>
+              </li>
+              <li>
+                <a href="#"><span>4</span>비에고</a>
+              </li>
+              <li>
+                <a href="#"><span>5</span>사일러스</a>
+              </li>
+              <li>
+                <a href="#"><span>6</span>코그모</a>
+              </li>
+              <li>
+                <a href="#"><span>7</span>루시안</a>
+              </li>
+              <li>
+                <a href="#"><span>8</span>그웬</a>
+              </li>
+              <li>
+                <a href="#"><span>9</span>세나</a>
+              </li>
+              <li>
+                <a href="#"><span>10</span>피오라</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main_slide">
+        <h2>주목해야 할 챔피언 <span id="ref_time"></span></h2>
+        <div class="slide_container">
+          <div class="pointbox">
+            <span class="point"></span><span class="point"></span><span class="point"></span
+            ><span class="point"></span><span class="point"></span><span class="point"></span
+            ><span class="point"></span><span class="point"></span><span class="point"></span
+            ><span class="point"></span><span class="point"></span><span class="point"></span
+            ><span class="point"></span><span class="point"></span><span class="point"></span
+            ><span class="point"></span>
+          </div>
+          <div class="slide_wrapper">
+            <!-- 여기서부터 -->
+            <div class="champ_slide active">
+              <div class="champ_img"></div>
+              <div class="champ_name"></div>
+              <div class="champ_info">
+                <ul class="champ_status">
+                  <li class="champ_status_header">
+                    <h2 class="champ_status_label"></h2>
+                    <span class="champ_info_before">11.12패치</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> 11.13패치</span
+                    >
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">승률</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">픽률</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">밴율</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="champ_point">
+                  <h4 class="champ_status_label">주목해야 할 포인트</h4>
+                  <div class="champ_point_txtbox"></div>
+                </div>
+                <button>
+                  챔피언 상세정보<span class="iconfont"><i class="icf-arrow-thick"></i></span>
+                </button>
+              </div>
+            </div>
+            <div class="champ_slide">
+              <div class="champ_img"></div>
+              <div class="champ_name"></div>
+              <div class="champ_info">
+                <ul class="champ_status">
+                  <li class="champ_status_header">
+                    <h2 class="champ_status_label"></h2>
+                    <span class="champ_info_before">11.12패치</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> 11.13패치</span
+                    >
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">승률</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">픽률</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h4 class="champ_status_label">밴율</h4>
+                    <span class="champ_info_before">%</span>
+                    <span class="champ_info_now"
+                      ><span class="iconfont"><i class="icf-arrow-thick"></i></span> %</span
+                    >
+                    <div class="champ_info_diff">
+                      <div class="rank up/down">
+                        <span class="iconfont"><i class="icf-arrow-thick"></i>%</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="champ_point">
+                  <h4 class="champ_status_label">주목해야 할 포인트</h4>
+                  <div class="champ_point_txtbox"></div>
+                </div>
+                <button>
+                  챔피언 상세정보<span class="iconfont"><i class="icf-arrow-thick"></i></span>
+                </button>
+              </div>
+            </div>
+            <!-- 여기까지 16개 -->
+          </div>
+        </div>
+      </div>
+      <div class="main_ad"></div>
+      <div class="contents_wrap">
+        <div class="side_ad_left"></div>
+        <div class="contents">
+          <section class="content_left">
+            <h4>인기게시물</h4>
+            <div class="board_left"></div>
+          </section>
+          <section class="content_right">
+            <h4>빌드 연구소</h4>
+            <div class="board_right"></div>
+          </section>
+        </div>
+        <div class="side_ad_right"></div>
+      </div>
+    </main>
+    <!-- /main -->
+
+    <!-- footer -->
+    <footer>
+      <div class="inner">
+        <ul class="fnb">
+          <li>
+            <a href="#">공지사항</a>
+          </li>
+          <li>
+            <a href="#">이용약관</a>
+            <!-- modal-->
+          </li>
+          <li>
+            <a href="#">개인정보처리방침</a>
+            <!-- modal-->
+          </li>
+          <li>
+            <a href="#">버그리포팅</a>
+          </li>
+        </ul>
+        <div class="copy">
+          <h4 class="copywrite"></h4>
+          <p class="copywright"></p>
+        </div>
+      </div>
+    </footer>
+    <!-- /footer -->
+
+    <!-- top_button -->
+    <div class="top_btn"></div>
+    <!-- /top_button -->
+
+    <!-- javaScript -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- /javaScript -->
+  </body>
+</html>
