@@ -54,3 +54,14 @@ let current_date = current.getDate();
 $("#ref_time").text(current_month + "-" + current_date + " 기준");
 
 //main-slide
+
+//rank???
+/*
+if (Number($(".rank span").text()) > 0) {
+  $(this).addClass("up");
+} else if (Number($(".rank span").text) < 0) {
+  $(this).addClass("down");
+} else {
+  $(this).css("color", "rgba(256,256,256,0.65)");
+}
+*/

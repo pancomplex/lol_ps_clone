@@ -431,7 +431,7 @@ header {
   width: 1100px;
   height: 24;
   margin: 0 auto;
-  padding-bottom: 12;
+  padding-bottom: 12px;
   color: #fff;
 }
 .main_slide h2 span {
@@ -455,6 +455,7 @@ header {
   min-width: 172px;
   height: 225px;
   margin: 0 12px;
+  margin-top: 159px;
   position: relative;
   overflow: hidden;
 }
@@ -480,6 +481,7 @@ header {
 .champ_slide.active {
   min-width: 640px;
   height: 386px;
+  margin: 0 12px;
   padding: 20px 20px 20px 280px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -505,6 +507,38 @@ header {
 }
 .champ_slide.active .champ_info {
   display: block;
+}
+.champ_status li {
+  width: 340px;
+}
+.champ_status li > * {
+  display: inline-block;
+}
+.champ_status_label {
+  font-size: 14px;
+  color: #7e9bff;
+}
+.champ_info_before {
+  text-align: right;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.65);
+}
+.champ_info_now {
+  width: 120px;
+  padding-right: 12px;
+  box-sizing: border-box;
+  text-align: right;
+  font-size: 20px;
+  color: #fff;
+}
+.rank.up {
+  color: #00a777;
+}
+.rank.down {
+  color: #d71729;
+}
+.champ_point_txtbox {
+  word-break: break-all;
 }
 
 .contents_wrap {
