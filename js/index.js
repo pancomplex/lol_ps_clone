@@ -29,6 +29,11 @@ $("#realtime").click(function () {
   $(this).parent().parent().toggleClass("open");
   $(this).parent().toggleClass("open");
   $(this).toggleClass("open");
+  $(this).mouseleave(function () {
+    $(this).parent().parent().removeClass("open");
+    $(this).parent().removeClass("open");
+    $(this).removeClass("open");
+  });
 });
 var i = 1;
 setInterval(function () {

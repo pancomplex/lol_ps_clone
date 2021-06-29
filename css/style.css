@@ -377,6 +377,7 @@ header {
   background-color: #fff;
   border-bottom: 4px solid #7e9bff;
   top: 0 !important;
+  z-index: 1;
 }
 #realtime li {
   width: 100%;
