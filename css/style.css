@@ -232,12 +232,12 @@ header {
 }
 
 .signbox {
-  padding: 4px 8px 0;
+  padding: 3px 8px 1px;
 }
 .signbox button {
   height: 36px;
   padding: 6px 12px;
-  vertical-align: bottom;
+
   line-height: 1;
   border: none;
   transition: ease 0.5s;
@@ -458,6 +458,7 @@ header {
   margin-top: 159px;
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
 }
 .champ_slide .champ_img {
   width: 172px;
