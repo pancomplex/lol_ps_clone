@@ -13,16 +13,20 @@ document.addEventListener("scroll", () => {
 });
 
 //gnb_sub dropdown
-$(".gnb>li").hover(function () {
-  $(this).children(".gnb_sub").css("display", "block").animate({ top: "35px", opacity: "1" }, 200);
-});
-$(".gnb>li").mouseleave(function () {
-  $(this)
-    .children(".gnb_sub")
-    .animate({ top: "25px", opacity: "0" }, 200, function () {
-      $(this).css("display", "none");
-    });
-});
+$(".gnb>li")
+  .mouseenter(function () {
+    $(this)
+      .children(".gnb_sub")
+      .css("display", "block")
+      .animate({ top: "35px", opacity: "1" }, 200);
+  })
+  .mouseleave(function () {
+    $(this)
+      .children(".gnb_sub")
+      .animate({ top: "25px", opacity: "0" }, 200, function () {
+        $(this).css("display", "none");
+      });
+  });
 
 //realtime
 $("#realtime").click(function () {
@@ -101,11 +105,15 @@ $.ajax({
               var diff_rank = diff.append($("<div>", { class: "rank" }));
               var diff_rate = data[i].info.diff.win_rate;
               if (diff_rate >= 0) {
-                diff_rank.addClass("up");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("up");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
               } else {
-                diff_rank.addClass("down");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("down");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
               }
             } else if (k == 2) {
               label.append("픽률");
@@ -114,11 +122,15 @@ $.ajax({
               var diff_rank = diff.append($("<div>", { class: "rank" }));
               var diff_rate = data[i].info.diff.pick_rate;
               if (diff_rate >= 0) {
-                diff_rank.addClass("up");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("up");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
               } else {
-                diff_rank.addClass("down");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("down");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
               }
             } else if (k == 3) {
               label.append("밴율");
@@ -127,11 +139,15 @@ $.ajax({
               var diff_rank = diff.append($("<div>", { class: "rank" }));
               var diff_rate = data[i].info.diff.ban_rate;
               if (diff_rate >= 0) {
-                diff_rank.addClass("up");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("up");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-up" }), "&nbsp;", diff_rate, "%");
               } else {
-                diff_rank.addClass("down");
-                diff_rank.append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
+                diff_rank.children(".rank").addClass("down");
+                diff_rank
+                  .children(".rank")
+                  .append($("<i>", { class: "fas fa-arrow-down" }), "&nbsp;", diff_rate, "%");
               }
             }
             status_data.append(label, before, now, diff);
@@ -150,23 +166,57 @@ $.ajax({
           button.append("챔피언 상세정보", $("<i>", { class: "fas fa-arrow-right" }));
           info.append(button);
           slide.append(info);
+
+          $(".pointbox").append($("<span>", { class: "slide_point" }));
         }
       }
     }
+
+    let champ_slide = $(".champ_slide");
     let info_slide = $(".champ_info").parent();
     let slide_index = 0;
-    /*
-    setInterval(function () {
-      info_slide[0].addClass("active");
-      info_slide[0].siblings().removeClass("active");
-      console.log(info_slide[0]);
+    let slide_position = -196 * (23 + slide_index);
+    let slide_point = $(".pointbox span");
+    $(info_slide[slide_index]).addClass("active");
+    $(".slide_wrapper").css({ left: "50%", transform: "translateX(" + slide_position + "px)" });
+    $(slide_point[slide_index]).css("backgroundColor", "#fff");
 
-      if (slide_index < 20) {
-        slide_index++;
-      } else {
+    $(champ_slide).click(function () {
+      var this_index = $(this).index() % 20;
+      console.log($(this).index() % 20);
+      slide_index = this_index - 1;
+      slide_change();
+    });
+
+    let slide_change = function () {
+      slide_index++;
+      if (slide_index >= 20) {
         slide_index = 0;
       }
-    }, 10000);
-    */
+      slide_position = -196 * (23 + slide_index);
+
+      $(info_slide[slide_index]).addClass("active");
+      $(info_slide[slide_index]).siblings().removeClass("active");
+      $(".slide_wrapper")
+        .css({ transform: "translateX(" + slide_position + "px)", marginLeft: "196px" })
+        .animate({ marginLeft: "20px" }, "fast");
+      $(slide_point[slide_index]).css("backgroundColor", "#fff");
+      $(slide_point[slide_index]).siblings().css("backgroundColor", "rgba(255,255,255,0.2)");
+
+      /*console.log(
+        slide_index,
+        slide_position,
+        $(info_slide[slide_index]).children(".champ_name").text()
+      );*/
+    };
+
+    let main_slide = setInterval(slide_change, 5000);
+    $(".active").mouseenter(function () {
+      clearInterval(main_slide);
+    });
+    $(".active").mouseleave(function () {
+      move = setInterval(main_slide, 5000);
+    });
+    main_slide;
   },
 });
