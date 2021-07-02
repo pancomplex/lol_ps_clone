@@ -120,6 +120,7 @@ footer .inner {
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
+  display: flex;
 }
 
 /* header */
@@ -305,6 +306,11 @@ header {
   padding: 8px 12px;
   border: none;
   border-radius: 0.25rem;
+  color: #213a96;
+  font-weight: 700;
+}
+.search input::placeholder {
+  font-weight: 400;
 }
 .search button {
   width: 48px;
@@ -546,6 +552,9 @@ header {
 .champ_status li:first-child span {
   font-size: 12px;
 }
+.champ_status li:first-child .champ_info_diff {
+  background: none;
+}
 .champ_status_label {
   font-size: 14px;
   font-weight: 400;
@@ -571,7 +580,10 @@ header {
   color: #fff;
 }
 .champ_info_diff {
-  width: 62px;
+  width: 54px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 .rank.up {
   color: #00a777;
@@ -652,21 +664,204 @@ header {
   height: 524px;
   display: flex;
 }
-.content_left {
+.contents section {
   width: 500px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
-.content_right {
-  width: 500px;
+.contents section div {
+  width: 100%;
+  margin-top: 20px;
+  padding: 4px 0 8px;
+  border-top: 1px solid rgba(126, 155, 255, 0.3);
+  border-bottom: 1px solid rgba(126, 155, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+.contents .post {
+  width: 100%;
+  height: 24px;
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.contents .post > * {
+  display: inline-block;
+}
+
+.contents .post i {
+  width: 36px;
+  text-align: center;
+  font-style: normal;
+  color: rgba(47, 62, 78, 0.4);
+}
+.contents .post:nth-child(-n + 3) i {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffc030;
+}
+.contents .post p {
+  width: 348px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.contents .post .major {
+  margin-right: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #213a96;
+}
+.contents .post .comment {
+  font-size: 12px;
+  color: rgba(47, 62, 78, 0.4);
+  text-align: right;
 }
 
 /* footer */
 footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(47, 62, 78, 0.05);
   background-color: #f3f4f6;
 }
 .fnb {
   display: flex;
+  width: 370px;
 }
 .fnb li {
-  margin: 0 10px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(47, 62, 78, 0.4);
+  cursor: pointer;
+}
+.fnb li:hover {
+  color: #213a96;
+}
+.copy {
+  width: 780px;
+  padding: 0 15px;
+}
+.copy h4 {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(47, 62, 78, 0.7);
+}
+.copy p {
+  font-size: 80%;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(47, 62, 78, 0.7);
+}
+
+/* modal */
+.modal_bg {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  opacity: 0;
+}
+.modal {
+  width: 500px;
+  height: 524px;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.modal_header {
+  width: 500px;
+  height: 44px;
+  box-sizing: border-box;
+  background-color: #213a96;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: relative;
+}
+.modal_header h4 {
+  padding: 8px;
+  padding-left: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #fff;
+}
+.modal_header button {
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.5;
+  border: none;
+  background-color: transparent;
+}
+.modal_header button:hover {
+  opacity: 0.8;
+}
+.modal_body {
+  width: 500px;
+  height: 413px;
+  box-sizing: border-box;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #2f3e4e;
+}
+.modal_body h5 {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.modal_footer {
+  width: 500px;
+  height: 67px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+}
+.modal_footer button {
+  width: auto;
+  height: 35px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #fff;
+  font-weight: 400;
+}
+.modal_footer button:hover {
+  background-color: #51575e;
+}
+
+/* top_button */
+.top_btn {
+  position: fixed;
+  z-index: 99;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
+}
+.top_btn i {
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #2f3e4e;
+  opacity: 0.2;
+  cursor: pointer;
 }

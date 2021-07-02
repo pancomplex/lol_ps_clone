@@ -1,6 +1,5 @@
 // header scroll
 
-let scroll_top = document.documentElement.scrollTop;
 document.addEventListener("scroll", () => {
   let scroll_top = document.documentElement.scrollTop;
   if (scroll_top > 100) {
@@ -13,12 +12,21 @@ document.addEventListener("scroll", () => {
 });
 
 //gnb_sub dropdown
-$(".gnb>li")
-  .mouseenter(function () {
+$(".gnb>li").hover(
+  function () {
+    $(this).children(".gnb_sub").css("display", "block").animate({ top: "35px", opacity: "1" }, 200);
+  },
+  function () {
     $(this)
       .children(".gnb_sub")
-      .css("display", "block")
-      .animate({ top: "35px", opacity: "1" }, 200);
+      .animate({ top: "25px", opacity: "0" }, 200, function () {
+        $(this).css("display", "none");
+      });
+  }
+);
+/*$(".gnb>li")
+  .mouseenter(function () {
+    $(this).children(".gnb_sub").css("display", "block").animate({ top: "35px", opacity: "1" }, 200);
   })
   .mouseleave(function () {
     $(this)
@@ -26,7 +34,7 @@ $(".gnb>li")
       .animate({ top: "25px", opacity: "0" }, 200, function () {
         $(this).css("display", "none");
       });
-  });
+  });*/
 
 //realtime
 $("#realtime").click(function () {
@@ -163,7 +171,7 @@ $.ajax({
           point.append(point_label, point_txt);
           info.append(point);
           var button = $("<button>");
-          button.append("챔피언 상세정보", $("<i>", { class: "fas fa-arrow-right" }));
+          button.append("챔피언 상세정보 ", $("<i>", { class: "fas fa-arrow-right" }));
           info.append(button);
           slide.append(info);
 
@@ -183,7 +191,7 @@ $.ajax({
 
     $(champ_slide).click(function () {
       var this_index = $(this).index() % 20;
-      console.log($(this).index() % 20);
+      /*console.log($(this).index() % 20);*/
       slide_index = this_index - 1;
       slide_change();
     });
@@ -203,20 +211,76 @@ $.ajax({
       $(slide_point[slide_index]).css("backgroundColor", "#fff");
       $(slide_point[slide_index]).siblings().css("backgroundColor", "rgba(255,255,255,0.2)");
 
-      /*console.log(
-        slide_index,
-        slide_position,
-        $(info_slide[slide_index]).children(".champ_name").text()
-      );*/
+      /*console.log(slide_index, slide_position, $(info_slide[slide_index]).children(".champ_name").text());*/
     };
 
     let main_slide = setInterval(slide_change, 5000);
-    $(".active").mouseenter(function () {
-      clearInterval(main_slide);
-    });
-    $(".active").mouseleave(function () {
-      move = setInterval(main_slide, 5000);
-    });
+    /*$(".active").hover(
+      function () {
+        clearInterval(main_slide);
+      },
+      function () {
+        setInterval(main_slide, 5000);
+      }
+    );*/
     main_slide;
   },
 });
+
+// contents
+//board_left
+$.ajax({
+  url: "data/hot_blog_list.json",
+  dataType: "json",
+  success: function (res) {
+    let data = res.results;
+    for (i = 0; i < data.length; i++) {
+      var post = $("<a>", { class: "post", href: "https://lol.ps" + data[i].url });
+      post.append(
+        $("<i>").text(i + 1),
+        $("<p>").append($("<span>", { class: "major" }).text("[" + data[i].major_name + "]"), data[i].title),
+        $("<span>", { class: "comment" }).text("댓글 " + data[i].comment_count)
+      );
+      $(".board_left").append(post);
+    }
+  },
+});
+//board_right
+$.ajax({
+  url: "data/hot_blog_list.json",
+  dataType: "json",
+  success: function (res) {
+    let data = res.results;
+    for (i = 0; i < data.length; i++) {
+      var post = $("<a>", { class: "post", href: "https://lol.ps" + data[i].url });
+      post.append(
+        $("<i>").text(i + 1),
+        $("<p>").append($("<span>", { class: "major" }).text("[" + data[i].major_name + "]"), data[i].title),
+        $("<span>", { class: "comment" }).text("댓글 " + data[i].comment_count)
+      );
+      $(".board_right").append(post);
+    }
+  },
+});
+
+// footer
+$(".modal_btn").click(function () {
+  $(this).siblings(".modal_bg").css({ display: "flex", alignItems: "center" }).animate({ opacity: "1" });
+});
+
+$(".close").click(function () {
+  $(".modal_bg").hide();
+});
+
+//top_btn
+$(".top_btn").click(function () {
+  document.documentElement.scrollTop = 0;
+});
+$(".top_btn i").hover(
+  function () {
+    $(this).css("opacity", "0.5");
+  },
+  function () {
+    $(this).css("opacity", "0.2");
+  }
+);
